@@ -1,0 +1,57 @@
+/* DataViewDemo.css */
+
+.dataview-demo .product-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.dataview-demo .product-description {
+  margin: 0 0 1rem 0;
+}
+
+.dataview-demo .product-category-icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.dataview-demo .product-category {
+  font-weight: 600;
+  vertical-align: middle;
+}
+.dataview-demo .product-grid-item {
+  margin: 0.5em;
+  border: 1px solid var(--surface-border);
+  padding: 1rem;
+}
+
+.dataview-demo .product-grid-item .product-grid-item-top,
+.dataview-demo .product-grid-item .product-grid-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.dataview-demo .product-grid-item img {
+  width: 75%;
+  margin: 0 0 2rem 0;
+  box-shadow: 0px 0px 0px;
+}
+
+.dataview-demo .product-grid-item .product-grid-item-content {
+  text-align: center;
+}
+.dataview-demo .product-grid-item .product-grid-item-content img {
+  width: auto;
+  height: 200px;
+  filter: opacity(80%) brightness(80%);
+  transition: filter 0.5s ease;
+}
+.dataview-demo .product-grid-item .product-grid-item-content img:hover {
+  filter: opacity(100%) brightness(100%);
+}
+
+.dataview-demo .product-grid-item .product-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

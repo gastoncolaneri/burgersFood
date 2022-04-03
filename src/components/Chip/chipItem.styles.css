@@ -1,0 +1,17 @@
+.chip__item {
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+}
+.chip__item:hover {
+  background-color: #143e75;
+}
+.chip__item img {
+  margin-left: 5px;
+}
+.selectedItem {
+  background-color: #143e75;
+  border: #93c5fdad 1px solid;
+}
