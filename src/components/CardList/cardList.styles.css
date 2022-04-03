@@ -1,0 +1,38 @@
+.items__container {
+  margin: auto;
+  max-width: 1000px;
+}
+
+.chip__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.options__container {
+  margin-top: 30px;
+}
+.options {
+  color: #fff;
+  border-top: #93c5fdad 1px solid;
+  border-bottom: #93c5fdad 1px solid;
+  width: 100%;
+  font-size: 25px;
+  margin-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: 600;
+  justify-content: center;
+  display: flex;
+  background-color: #0b213f;
+}
+
+.show-all {
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background-color 0.5s ease;
+}
+
+.show-all:hover {
+  background-color: #143e75;
+}

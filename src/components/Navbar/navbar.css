@@ -1,0 +1,32 @@
+.navbar {
+  position: sticky;
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 80px;
+  color: #9da3ad;
+  padding: 10px;
+}
+.logo__box {
+  flex: 10;
+}
+.logo {
+  width: 70px;
+  height: 70px;
+  filter: opacity(80%) brightness(80%);
+}
+.logo:hover {
+  filter: opacity(100%) brightness(100%);
+}
+.cart {
+  flex: 1;
+}
+.icon__cart {
+  font-size: 20px !important;
+}
+.login {
+  flex: 1;
+}
