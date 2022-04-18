@@ -1,4 +1,3 @@
-import { Button } from "primereact/button";
 import React from "react";
 import NoImagen from "../../../assets/NoImagen.png";
 import "./card.styles.css";
@@ -6,10 +5,10 @@ import "./card.styles.css";
 const Card = ({ data }) => {
   console.log(data);
   return (
-    <div className="dataview-demo items__container">
+    <div className="items__container">
       <div className="card">
         <div className="col-12">
-          <div className="product-list-item">
+          <div className="product-list-item ">
             <img
               src={data[0].img}
               onError={(e) => (e.target.src = NoImagen)}
