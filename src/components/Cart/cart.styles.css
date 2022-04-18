@@ -1,5 +1,5 @@
 .cart__overlay {
-  width: 30% !important;
+  min-width: 60% !important;
 }
 
 .cart__overlay .p-sidebar-content {
@@ -21,4 +21,16 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .cart__overlay {
+    min-width: 50% !important;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .cart__overlay {
+    min-width: 40% !important;
+  }
 }

@@ -7,6 +7,7 @@
 
 .dataview-demo .product-description {
   margin: 0 0 1rem 0;
+  min-height: 80px;
 }
 
 .dataview-demo .product-category-icon {
@@ -43,6 +44,7 @@
 }
 .dataview-demo .product-grid-item .product-grid-item-content img {
   width: auto;
+  max-width: 100%;
   height: 200px;
   filter: opacity(80%) brightness(80%);
   transition: filter 0.5s ease;
@@ -54,4 +56,11 @@
 .dataview-demo .product-grid-item .product-price {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.blue-tooltip.p-tooltip .p-tooltip-arrow {
+  border-top-color: var(--blue-500);
+}
+.blue-tooltip.p-tooltip .p-tooltip-text {
+  background-color: var(--blue-500);
 }

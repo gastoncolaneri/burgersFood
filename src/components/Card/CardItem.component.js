@@ -19,10 +19,7 @@ const CardItem = (data) => {
         </div>
         <div className="product-grid-item-bottom">
           <span className="product-price">${data?.price}</span>
-          <Button
-            icon="pi pi-shopping-cart"
-            label="Agregar"
-          ></Button>
+          <Button icon="pi pi-shopping-cart" label="Agregar" />
         </div>
       </div>
     </div>

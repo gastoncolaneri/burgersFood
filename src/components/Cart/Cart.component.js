@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./cart.styles.css";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
