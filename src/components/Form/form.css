@@ -1,0 +1,68 @@
+:root {
+  --red-100: #ffd0ce;
+  --red-200: #ffaca7;
+  --red-300: #ff8780;
+  --red-400: #ff6259;
+  --red-500: #ff3d32;
+  --red-600: #d9342b;
+  --red-700: #b32b23;
+  --red-800: #8c221c;
+  --red-900: #661814;
+}
+
+.spinner__container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.buttons__container {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.buttons__container .p-button.google {
+  background: linear-gradient(to left, var(--red-600) 50%, var(--red-700) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: background-position 0.5s ease-out;
+  color: #fff;
+  border-color: var(--red-700);
+}
+.buttons__container .p-button.google:hover {
+  background-position: left bottom;
+}
+.buttons__container .p-button.google i {
+  background-color: var(--red-700);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.buttons__container .p-button.google:focus {
+  box-shadow: 0 0 0 1px var(--red-400);
+}
+
+.buttons__container .p-button.ingresar__button {
+  background: linear-gradient(to left, var(--blue-600) 50%, var(--blue-700) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: background-position 0.5s ease-out;
+  color: #fff;
+  border-color: var(--blue-700);
+}
+.buttons__container .p-button.ingresar__button:hover {
+  background-position: left bottom;
+}
+.buttons__container .p-button.ingresar__button i {
+  background-color: var(--blue-700);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.buttons__container .p-button.ingresar__button:focus {
+  box-shadow: 0 0 0 1px var(--blue-400);
+}
+
+.field {
+  margin-bottom: 25px;
+}
