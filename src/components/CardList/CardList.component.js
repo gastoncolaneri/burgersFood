@@ -19,7 +19,7 @@ const CardList = () => {
     <>
       <div className="items__container">
         <div className="options">Menu</div>
-        <div className="chip__container">
+        <div className="chip__container flex-column sm:flex-row">
           {isFilter && (
             <div
               role="button"
@@ -36,7 +36,7 @@ const CardList = () => {
               />
             </div>
           )}
-          {optionsMenu.map((data) => {
+          {optionsMenu.map((data, index) => {
             return (
               <ChipItem
                 data={data}
@@ -44,6 +44,7 @@ const CardList = () => {
                 setIsFilter={setIsFilter}
                 filterSelected={filterSelected}
                 setFilterSelected={setFilterSelected}
+                key={index}
               />
             );
           })}
@@ -51,9 +52,9 @@ const CardList = () => {
       </div>
       <div className="dataview-demo items__container">
         <div className="card">
-          {filterSelected.map((item) => {
+          {filterSelected.map((item, index) => {
             return (
-              <div className="options__container">
+              <div className="options__container" key={index}>
                 <div className="options">{item}</div>
                 <DataView
                   value={filterBySection(item)}

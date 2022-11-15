@@ -18,7 +18,7 @@
 .buttons__container {
   display: flex;
   justify-content: space-between;
-  height: 30px;
+  align-items: center;
 }
 
 .buttons__container .p-button.google {
@@ -28,27 +28,33 @@
   transition: background-position 0.5s ease-out;
   color: #fff;
   border-color: var(--red-700);
+  height: 30px;
+  text-align: center;
+  max-width: 250px;
+  justify-content: center;
 }
 .buttons__container .p-button.google:hover {
   background-position: left bottom;
-}
-.buttons__container .p-button.google i {
-  background-color: var(--red-700);
-  height: 100%;
-  display: flex;
-  align-items: center;
 }
 .buttons__container .p-button.google:focus {
   box-shadow: 0 0 0 1px var(--red-400);
 }
 
 .buttons__container .p-button.ingresar__button {
-  background: linear-gradient(to left, var(--blue-600) 50%, var(--blue-700) 50%);
+  background: linear-gradient(
+    to left,
+    var(--blue-600) 50%,
+    var(--blue-700) 50%
+  );
   background-size: 200% 100%;
   background-position: right bottom;
   transition: background-position 0.5s ease-out;
   color: #fff;
   border-color: var(--blue-700);
+  height: 30px;
+  text-align: center;
+  max-width: 250px;
+  margin-bottom: 15px;
 }
 .buttons__container .p-button.ingresar__button:hover {
   background-position: left bottom;

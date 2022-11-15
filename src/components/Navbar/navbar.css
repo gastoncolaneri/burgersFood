@@ -1,14 +1,19 @@
 .navbar {
   position: sticky;
+  top: 0;
   display: flex;
   flex-direction: row;
-  max-width: 1200px;
   justify-content: center;
   align-items: center;
   margin: auto;
-  height: 80px;
+  height: 70px;
   color: #9da3ad;
   padding: 10px;
+  width: 100%;
+  background-color: #040d19;
+  z-index: 1000;
+  border-top: #93c5fdad 2px solid;
+  border-bottom: #93c5fdad 2px solid;
 }
 .logo__box {
   flex: 10;

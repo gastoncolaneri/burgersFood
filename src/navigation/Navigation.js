@@ -18,8 +18,6 @@ const Navigation = () => {
   const [userLogin, setUserLogin] = useState(false);
   const foodContext = useContext(FoodsContext);
 
-  console.log(foodContext.prueba);
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       user ? setUserLogin(true) : setUserLogin(false);
