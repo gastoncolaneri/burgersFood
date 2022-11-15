@@ -3,7 +3,6 @@ import NoImagen from "../../../assets/NoImagen.png";
 import "./card.styles.css";
 
 const Card = ({ data }) => {
-  console.log(data);
   return (
     <div className="items__container">
       <div className="card">
