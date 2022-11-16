@@ -3,7 +3,7 @@ import React from "react";
 import NoImagen from "../../assets/NoImagen.png";
 import "./cardItem.styles.css";
 
-const CardItem = (data) => {
+const CardItem = (data, handleClick) => {
   return (
     <div className="col-12 md:col-4">
       <div className="product-grid-item card">
@@ -19,7 +19,11 @@ const CardItem = (data) => {
         </div>
         <div className="product-grid-item-bottom">
           <span className="product-price">${data?.price}</span>
-          <Button icon="pi pi-shopping-cart" label="Agregar" />
+          <Button
+            icon="pi pi-shopping-cart"
+            label="Agregar"
+            onClick={() => handleClick(data)}
+          />
         </div>
       </div>
     </div>
