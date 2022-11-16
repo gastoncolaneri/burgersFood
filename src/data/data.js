@@ -25,6 +25,7 @@ export const foodItems = [
     section: "Pizzas",
     description: "Pizza casera a la piedra, muzzarella, tomate y morrón asado",
     price: 550,
+    quantity: 0,
   },
   {
     id: 2,
@@ -33,6 +34,7 @@ export const foodItems = [
     section: "Pizzas",
     description: "Pizza casera a la piedra, muzzarella doble y longaniza.",
     price: 650,
+    quantity: 0,
   },
   {
     id: 3,
@@ -42,6 +44,7 @@ export const foodItems = [
     description:
       "Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo y champiñones",
     price: 750,
+    quantity: 0,
   },
   {
     id: 4,
@@ -51,6 +54,7 @@ export const foodItems = [
     description:
       "Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, queso cheddar, lechuga y bacon",
     price: 700,
+    quantity: 0,
   },
   {
     id: 5,
@@ -60,6 +64,7 @@ export const foodItems = [
     description:
       "Hamburguesa de asado de 180g, mostaza dulce, cebolla morada, queso dambo, bacon y lechuga",
     price: 650,
+    quantity: 0,
   },
   {
     id: 6,
@@ -69,6 +74,7 @@ export const foodItems = [
     description:
       "Hamburguesa de asado de 180g, mostaza dulce, cebolla morada, rúcula y queso cheddar",
     price: 600,
+    quantity: 0,
   },
   {
     id: 7,
@@ -77,6 +83,7 @@ export const foodItems = [
     section: "Complementos",
     description: "Porción de papas fritas medianas",
     price: 150,
+    quantity: 0,
   },
   {
     id: 8,
@@ -85,6 +92,7 @@ export const foodItems = [
     section: "Complementos",
     description: "Porción de papas fritas con bacon y queso cheddar",
     price: 200,
+    quantity: 0,
   },
   {
     id: 9,
@@ -93,6 +101,7 @@ export const foodItems = [
     section: "Complementos",
     description: "10 unidades de nuggets",
     price: 200,
+    quantity: 0,
   },
   {
     id: 10,
@@ -101,6 +110,7 @@ export const foodItems = [
     section: "Bebidas",
     description: "Lata de gaseosa sabor Coca cola",
     price: 120,
+    quantity: 0,
   },
   {
     id: 11,
@@ -109,6 +119,7 @@ export const foodItems = [
     section: "Bebidas",
     description: "Lata de gaseosa sabor Sprite",
     price: 120,
+    quantity: 0,
   },
   {
     id: 12,
@@ -117,6 +128,7 @@ export const foodItems = [
     section: "Bebidas",
     description: "Lata de gaseosa sabor Fanta",
     price: 120,
+    quantity: 0,
   },
   {
     id: 13,
@@ -125,6 +137,7 @@ export const foodItems = [
     section: "Bebidas",
     description: "Lata de gaseosa sabor Fanta uva",
     price: 120,
+    quantity: 0,
   },
   {
     id: 14,
@@ -133,6 +146,7 @@ export const foodItems = [
     section: "Bebidas",
     description: "Botella de agua mineral sin gas",
     price: 100,
+    quantity: 0,
   },
 ];
 
