@@ -31,11 +31,13 @@
   flex: 1 1 0;
 }
 
-.items__container .product-list-item .product-price {
+.price__container {
+  margin-bottom: 5px;
+}
+
+.price__value {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  align-self: flex-end;
 }
 
 @media screen and (max-width: 768px) {

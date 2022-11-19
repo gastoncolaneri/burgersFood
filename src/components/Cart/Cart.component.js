@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
-import Card from "./Card/Card.component";
+import Card from "./CardResume/CardResume.component";
 import CartContext from "../../context/cart/CartContext";
 
 import "./cart.styles.css";
@@ -10,7 +10,7 @@ import "./cart.styles.css";
 const Cart = ({ isVisibleCart, setIsVisibleCard }) => {
   const navigate = useNavigate();
   const cartContext = useContext(CartContext);
-  const { cartItems, deleteItems } = cartContext;
+  const { cartItems, deleteItems, setFinalItems } = cartContext;
   const [itemsAdded, setItemsAdded] = useState(cartItems);
 
   const deleteDuplicate = useCallback(() => {
@@ -63,9 +63,18 @@ const Cart = ({ isVisibleCart, setIsVisibleCard }) => {
     setItemsAdded(tmpArray);
   };
 
+  const onClick = () => {
+    setIsVisibleCard(false);
+    navigate("checkout", { state: { itemsAdded } });
+  };
+
   useEffect(() => {
     deleteDuplicate();
   }, [cartItems, deleteDuplicate]);
+
+  useEffect(() => {
+    setFinalItems(itemsAdded);
+  }, [itemsAdded]);
 
   return (
     <Sidebar
@@ -79,7 +88,12 @@ const Cart = ({ isVisibleCart, setIsVisibleCard }) => {
       <div className="cart__container">
         <h3>Resumen de tu pedido</h3>
         {itemsAdded?.map((item) => (
-          <Card data={item} key={item?.id} changeQuantity={changeQuantity} />
+          <Card
+            data={item}
+            key={item?.id}
+            hasChangeQuantity
+            changeQuantity={changeQuantity}
+          />
         ))}
       </div>
 
@@ -88,9 +102,9 @@ const Cart = ({ isVisibleCart, setIsVisibleCard }) => {
           label={
             !cartItems?.length
               ? "No hay productos en el carrito"
-              : `Continuar con el pago: $${totalAmount}`
+              : `Continuar con el pago: €${totalAmount}`
           }
-          onClick={() => navigate("checkout")}
+          onClick={onClick}
           disabled={!cartItems?.length}
         />
       </div>

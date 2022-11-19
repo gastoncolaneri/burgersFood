@@ -1,6 +1,12 @@
 import { useReducer } from "react";
 import cartReducer, { cartInitialState } from "./cartReducer";
-import { ADD_ITEMS, CLEAR_CART, DELETE_ITEMS, FOOD_FILTERED } from "../types";
+import {
+  ADD_ITEMS,
+  CLEAR_CART,
+  DELETE_ITEMS,
+  FINAL_ITEMS,
+  FOOD_FILTERED,
+} from "../types";
 
 const CardActions = () => {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState);
@@ -11,6 +17,13 @@ const CardActions = () => {
     dispatch({
       type: ADD_ITEMS,
       payload: tmpItems,
+    });
+  };
+
+  const setFinalItems = (items) => {
+    dispatch({
+      type: FINAL_ITEMS,
+      payload: items,
     });
   };
 
@@ -38,9 +51,11 @@ const CardActions = () => {
   return {
     cartItems: state.cartItems,
     filterSelected: state.filterSelected,
+    finalItems: state.finalItems,
     addItems,
     deleteItems,
     clearCart,
+    setFinalItems,
     filterFood,
   };
 };

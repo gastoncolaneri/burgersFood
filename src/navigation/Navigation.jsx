@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Navbar from "../components/Navbar/Navbar";
-import Checkout from "../views/Checkout/Checkout";
+import Checkout from "../views/Checkout/Checkout.view";
 import Home from "../views/Home/Home.view";
 import Login from "../views/Login/Login.view";
 import Orders from "../views/Orders/Orders";

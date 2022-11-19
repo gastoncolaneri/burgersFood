@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../../assets/banner.jpg";
-import CardList from "../../components/CardList/CardList.component";
+import CardList from "../../components/Home/CardList/CardList.component";
 import "./home.styles.css";
 
 const Home = () => {

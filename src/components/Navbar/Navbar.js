@@ -1,16 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Button } from "primereact/button";
-import { SplitButton } from "primereact/splitbutton";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { Button } from "primereact/button";
+import { Toast } from "primereact/toast";
+import { SplitButton } from "primereact/splitbutton";
 import Cart from "../Cart/Cart.component";
+import CartContext from "../../context/cart/CartContext";
 import { app } from "../../utils/Firebase";
 import Logo from "../../assets/logo.png";
 
 import "./navbar.css";
-import { Toast } from "primereact/toast";
 
 const Navbar = () => {
+  const cartContext = useContext(CartContext);
+  const { cartItems } = cartContext;
   const toast = useRef(null);
   const auth = getAuth(app);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +52,14 @@ const Navbar = () => {
       },
     },
     {
+      label: "Mis direcciones",
+      icon: "pi pi-home",
+      iconPos: "right",
+      command: () => {
+        console.log("Mis direcciones");
+      },
+    },
+    {
       label: "Cerrar sesión",
       icon: "pi pi-sign-out",
       iconPos: "right",
@@ -74,6 +85,7 @@ const Navbar = () => {
                 onClick={() => {
                   setIsVisibleCard(true);
                 }}
+                disabled={!cartItems?.length}
               />
             </div>
           )}

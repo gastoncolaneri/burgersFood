@@ -7,8 +7,10 @@ const CartState = (props) => {
     cartItems,
     clearCart,
     deleteItems,
+    setFinalItems,
     filterFood,
     filterSelected,
+    finalItems,
   } = CardActions();
 
   const value = {
@@ -16,8 +18,10 @@ const CartState = (props) => {
     cartItems,
     clearCart,
     deleteItems,
+    setFinalItems,
     filterFood,
     filterSelected,
+    finalItems,
   };
 
   return (

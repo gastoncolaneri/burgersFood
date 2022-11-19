@@ -1,0 +1,33 @@
+.cart__container {
+  margin: auto;
+  max-width: 1000px;
+}
+.steps__container {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.step__item {
+  max-width: 80%;
+  flex: 1;
+}
+.amount__container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0px 10px;
+  margin: 30px auto;
+}
+.amount__text {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.buttons-resume__container {
+  display: flex;
+  flex: 1;
+  margin: 10px auto;
+  justify-content: flex-end;
+}

@@ -1,0 +1,71 @@
+.location__container {
+  max-width: 1000px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.location__options {
+  display: flex;
+  flex: 1;
+  margin-bottom: 20px;
+}
+.location__options div {
+  display: flex;
+  flex: 1;
+  height: 20px;
+  border-radius: 20px;
+}
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 300px;
+  width: 100%;
+}
+.location-info__container {
+  display: flex;
+  flex: 1;
+}
+.location-icon__container {
+  display: flex;
+  width: 50px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.location__icon {
+  font-size: 1.5rem;
+}
+
+.location__info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.location-info__title {
+  font-size: 1.2;
+  font-weight: 700;
+}
+.delay__container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.delay__text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.button-location__container {
+    display: flex;
+    align-items: center;
+}
