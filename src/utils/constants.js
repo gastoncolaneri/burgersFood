@@ -9,6 +9,9 @@ export const RECOGIDA = "Recogida";
 export const LOCATION_DIALOG = 0;
 export const DELIVERY_INFO_DIALOG = 1;
 
+export const NEW_DIALOG = 0;
+export const EDIT_DIALOG = 1;
+
 export const DEFAULT_VALUES_LOCATION = {
   address: "",
   additionalInfo: "",
@@ -25,3 +28,12 @@ export const OPTIONS_DELIVERY_INFO = [
 ];
 
 export const DELIVERY_TYPE = ["A domicilio", "Recogida"];
+
+export const DISCOUNT_CODE = [
+  { name: "off5", value: 5 },
+  { name: "off10", value: 10 },
+  { name: "off15", value: 15 },
+  { name: "off20", value: 20 },
+  { name: "off25", value: 25 },
+  { name: "off30", value: 30 },
+];

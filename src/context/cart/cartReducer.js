@@ -1,17 +1,18 @@
 import { foodItems } from "../../data/data";
 import {
   ADD_ITEMS,
+  CHANGE_QUANTITY_ITEMS,
   CLEAR_CART,
   DELETE_ITEMS,
-  FINAL_ITEMS,
   FOOD_FILTERED,
+  CHANGE_TOTAL_AMOUNT,
 } from "../types";
 
 export const cartInitialState = {
   data: foodItems,
   cartItems: [],
-  finalItems: [],
   filterSelected: ["Hamburguesas", "Pizzas", "Complementos", "Bebidas"],
+  totalAmount: 0,
 };
 
 const cartReducer = (state, action) => {
@@ -19,14 +20,16 @@ const cartReducer = (state, action) => {
   switch (type) {
     case ADD_ITEMS:
       return { ...state, cartItems: payload };
+    case CHANGE_QUANTITY_ITEMS:
+      return { ...state, cartItems: payload };
     case CLEAR_CART:
       return { ...state, cartItems: payload };
     case DELETE_ITEMS:
       return { ...state, cartItems: payload };
-    case FINAL_ITEMS:
-      return { ...state, finalItems: payload };
     case FOOD_FILTERED:
       return { ...state, filterSelected: payload };
+    case CHANGE_TOTAL_AMOUNT:
+      return { ...state, totalAmount: payload };
     default:
       return state;
   }

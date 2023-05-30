@@ -34,7 +34,7 @@ const Card = ({ data, changeQuantity, hasChangeQuantity = true }) => {
             </div>
             <div style={{ flexDirection: "column", display: "flex" }}>
               <div className="price__container">
-                <span className="price__value">€{data?.price}</span>
+                <span className="price__value">€{data?.totalPrice}</span>
               </div>
               {hasChangeQuantity ? (
                 <Dropdown
@@ -42,7 +42,11 @@ const Card = ({ data, changeQuantity, hasChangeQuantity = true }) => {
                   options={generateOptions()}
                   onChange={(e) => {
                     setValueSelected(e.value);
-                    changeQuantity(data?.id, e.value);
+                    changeQuantity({
+                      id: data?.id,
+                      quantity: e?.value,
+                      price: data?.price,
+                    });
                   }}
                 />
               ) : (

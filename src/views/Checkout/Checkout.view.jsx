@@ -43,14 +43,14 @@ const Checkout = () => {
   const navigate = useNavigate();
   const cartContext = useContext(CartContext);
   const locationContext = useContext(LocationContext);
-  const { finalItems, setFinalItems, clearCart } = cartContext;
-  const { location, deliveryInstructions, deliveryType } = locationContext;
+  const { cartItems, clearCart } = cartContext;
+  const { locations, deliveryInstructions, deliveryType } = locationContext;
   const [activeIndex, setActiveIndex] = useState(0);
 
   const isDisabled = () => {
     if (activeIndex === STEP_LOCATION) {
       return (
-        (!location?.length || !deliveryInstructions) &&
+        (!locations?.length || !deliveryInstructions) &&
         deliveryType === A_DOMICILIO
       );
     }
@@ -66,14 +66,13 @@ const Checkout = () => {
   const cancelOrder = () => {
     navigate("/");
     clearCart();
-    setFinalItems([]);
   };
 
   useEffect(() => {
-    if (!finalItems.length) {
+    if (!cartItems.length) {
       navigate("/");
     }
-  }, [finalItems.length, navigate]);
+  }, [cartItems.length, navigate]);
 
   return (
     <div className="cart__container">
@@ -82,7 +81,7 @@ const Checkout = () => {
           model={items}
           activeIndex={activeIndex}
           onSelect={(e) => setActiveIndex(e.index)}
-          readOnly={!location?.length || !deliveryInstructions}
+          readOnly={!locations?.length || !deliveryInstructions}
           className="step__item"
         />
       </div>

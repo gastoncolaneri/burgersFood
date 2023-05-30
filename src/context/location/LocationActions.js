@@ -12,8 +12,8 @@ const LocationActions = () => {
   const [state, dispatch] = useReducer(locationReducer, locationInitialState);
 
   const addLocation = (locationToAdd) => {
-    const tmpLocations = state.location;
-    const id = state.location.length + 1;
+    const tmpLocations = state.locations;
+    const id = state.locations.length + 1;
     tmpLocations.push({ ...locationToAdd, id });
     dispatch({
       type: ADD_LOCATION,
@@ -26,9 +26,9 @@ const LocationActions = () => {
       payload: defaultLocation,
     });
   };
-  const modifyLocation = (id, locationModified) => {
-    const tmpLocations = state.location.map((item) => {
-      if (item?.id === id) {
+  const modifyLocation = (locationModified) => {
+    const tmpLocations = state.locations.map((item) => {
+      if (item?.id === 1) {
         return locationModified;
       }
       return item;
@@ -53,7 +53,7 @@ const LocationActions = () => {
   };
 
   return {
-    location: state.location,
+    locations: state.locations,
     deliveryInstructions: state.deliveryInstructions,
     defaultLocation: state.defaultLocation,
     deliveryType: state.deliveryType,

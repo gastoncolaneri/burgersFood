@@ -9,7 +9,7 @@ const CartState = (props) => {
     setDeliveryInstructions,
     setDeliveryType,
     deliveryInstructions,
-    location,
+    locations,
     defaultLocation,
     deliveryType,
   } = LocationActions();
@@ -21,7 +21,7 @@ const CartState = (props) => {
     setDeliveryInstructions,
     setDeliveryType,
     deliveryInstructions,
-    location,
+    locations,
     defaultLocation,
     deliveryType,
   };

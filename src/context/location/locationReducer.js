@@ -8,7 +8,7 @@ import {
 } from "../types";
 
 export const locationInitialState = {
-  location: [],
+  locations: [],
   defaultLocation: null,
   deliveryInstructions: null,
   deliveryType: DELIVERY_TYPE[0],
@@ -18,11 +18,11 @@ const locationReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case ADD_LOCATION:
-      return { ...state, location: payload };
+      return { ...state, locations: payload };
     case SET_DEFAULT_LOCATION:
       return { ...state, defaultLocation: payload };
     case MODIFY_LOCATION:
-      return { ...state, location: payload };
+      return { ...state, locations: payload };
     case SET_DELIVERY_INSTRUCTIONS:
       return { ...state, deliveryInstructions: payload };
     case SET_DELIVERY_TYPE:

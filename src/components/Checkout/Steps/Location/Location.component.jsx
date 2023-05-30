@@ -16,7 +16,7 @@ import "./location.styles.css";
 const Location = () => {
   const locationContext = useContext(LocationContext);
   const {
-    location,
+    locations,
     defaultLocation,
     deliveryInstructions,
     setDeliveryType,
@@ -33,13 +33,13 @@ const Location = () => {
             setIsOpen(true);
             setTypeDialog(LOCATION_DIALOG);
           }}
-          label={location.length ? "Editar" : "Crear"}
+          label={locations.length ? "Editar" : "Crear"}
           style={{ width: "60px" }}
           className="p-button-sm p-button-rounded p-1"
         />
       </div>
     );
-  }, [location.length]);
+  }, [locations.length]);
   return (
     <div className="location__container">
       <SelectButton
@@ -50,7 +50,7 @@ const Location = () => {
       />
       {deliveryType === A_DOMICILIO ? (
         <div>
-          {location.length ? (
+          {locations.length ? (
             <div className="location-info__container">
               <div className="location-icon__container">
                 <i className="pi pi-map-marker location__icon" />
@@ -121,7 +121,7 @@ const Location = () => {
                     setIsOpen(true);
                     setTypeDialog(DELIVERY_INFO_DIALOG);
                   }}
-                  label={deliveryInstructions ? "Editar" : "Crear"}
+                  label="Crear"
                   style={{ width: "60px" }}
                   className="p-button-sm p-button-rounded p-1"
                 />
@@ -171,7 +171,7 @@ const Location = () => {
       <DialogFormLocation
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        type={typeDialog}
+        typeDialog={typeDialog}
       />
     </div>
   );

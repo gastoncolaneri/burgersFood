@@ -8,10 +8,11 @@ export const USER_LOGOUT = "USER_LOGOUT";
 // Foods types
 
 export const ADD_ITEMS = "ADD_ITEMS";
+export const CHANGE_QUANTITY_ITEMS = "CHANGE_QUANTITY_ITEMS";
 export const DELETE_ITEMS = "DELETE_ITEMS";
-export const FINAL_ITEMS = "FINAL_ITEMS";
 export const CLEAR_CART = "CLEAR_CART";
 export const FOOD_FILTERED = "FOOD_FILTERED";
+export const CHANGE_TOTAL_AMOUNT = "CHANGE_TOTAL_AMOUNT";
 
 // Location types
 

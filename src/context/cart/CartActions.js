@@ -4,26 +4,76 @@ import {
   ADD_ITEMS,
   CLEAR_CART,
   DELETE_ITEMS,
-  FINAL_ITEMS,
   FOOD_FILTERED,
+  CHANGE_TOTAL_AMOUNT,
+  CHANGE_QUANTITY_ITEMS,
 } from "../types";
 
 const CardActions = () => {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState);
 
   const addItems = (itemToAdd) => {
-    const tmpItems = [...state.cartItems];
-    tmpItems.push(itemToAdd);
+    const tmpCartItems = [...state.cartItems];
+    const hasIncluded = tmpCartItems.some(
+      (value) => value?.id === itemToAdd?.id
+    );
+    !hasIncluded && tmpCartItems.push(itemToAdd);
+    const updateQuantity = (value, index, array) => {
+      if (itemToAdd?.id === value?.id) {
+        const tmpQuantity = value?.quantity + 1;
+        const tmpValue = value?.price;
+        return (array[index] = {
+          ...value,
+          quantity: tmpQuantity,
+          totalPrice: tmpQuantity * tmpValue,
+        });
+      }
+      return (array[index] = { ...value, quantity: value?.quantity });
+    };
+
+    tmpCartItems.forEach(updateQuantity);
+
+    const tmpTotalAmount = tmpCartItems.reduce(
+      (acc, currentValue) => acc + currentValue.totalPrice,
+      0
+    );
+
+    dispatch({
+      type: CHANGE_TOTAL_AMOUNT,
+      payload: tmpTotalAmount,
+    });
+
     dispatch({
       type: ADD_ITEMS,
-      payload: tmpItems,
+      payload: tmpCartItems,
     });
   };
 
-  const setFinalItems = (items) => {
+  const changeQuantityItems = ({ quantity, id, price }) => {
+    let tmpArray;
+    if (quantity === 0) {
+      const modifyQuantity = [...state.cartItems].map((item) => {
+        if (item?.id === id) {
+          deleteItems(id);
+          return { ...item, quantity: 0, totalPrice: 0 };
+        }
+        return item;
+      });
+      tmpArray = modifyQuantity.filter((item) => {
+        return item?.id !== id;
+      });
+    } else {
+      tmpArray = [...state.cartItems].map((item) => {
+        if (item?.id === id) {
+          return { ...item, quantity: quantity, totalPrice: quantity * price };
+        }
+        return item;
+      });
+    }
+
     dispatch({
-      type: FINAL_ITEMS,
-      payload: items,
+      type: CHANGE_QUANTITY_ITEMS,
+      payload: tmpArray,
     });
   };
 
@@ -34,7 +84,7 @@ const CardActions = () => {
       payload: tmpItems,
     });
   };
-  const clearCart = (news) => {
+  const clearCart = () => {
     dispatch({
       type: CLEAR_CART,
       payload: [],
@@ -48,15 +98,23 @@ const CardActions = () => {
     });
   };
 
+  const changeTotalAmount = (totalAmount) => {
+    dispatch({
+      type: CHANGE_TOTAL_AMOUNT,
+      payload: totalAmount,
+    });
+  };
+
   return {
     cartItems: state.cartItems,
     filterSelected: state.filterSelected,
-    finalItems: state.finalItems,
+    totalAmount: state.totalAmount,
     addItems,
     deleteItems,
     clearCart,
-    setFinalItems,
     filterFood,
+    changeTotalAmount,
+    changeQuantityItems,
   };
 };
 
