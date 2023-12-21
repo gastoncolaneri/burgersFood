@@ -12,6 +12,8 @@ const CartState = (props) => {
     changeTotalAmount,
     changeQuantityItems,
     totalAmount,
+    addSpecialNotes,
+    specialNotes,
   } = CardActions();
 
   const value = {
@@ -24,6 +26,8 @@ const CartState = (props) => {
     changeTotalAmount,
     changeQuantityItems,
     totalAmount,
+    addSpecialNotes,
+    specialNotes,
   };
 
   return (

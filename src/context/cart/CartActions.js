@@ -7,6 +7,7 @@ import {
   FOOD_FILTERED,
   CHANGE_TOTAL_AMOUNT,
   CHANGE_QUANTITY_ITEMS,
+  ADD_SPECIAL_NOTES,
 } from "../types";
 
 const CardActions = () => {
@@ -105,16 +106,22 @@ const CardActions = () => {
     });
   };
 
+  const addSpecialNotes = (specialNotes) => {
+    dispatch({ type: ADD_SPECIAL_NOTES, payload: specialNotes });
+  };
+
   return {
     cartItems: state.cartItems,
     filterSelected: state.filterSelected,
     totalAmount: state.totalAmount,
+    specialNotes: state.specialNotes,
     addItems,
     deleteItems,
     clearCart,
     filterFood,
     changeTotalAmount,
     changeQuantityItems,
+    addSpecialNotes,
   };
 };
 

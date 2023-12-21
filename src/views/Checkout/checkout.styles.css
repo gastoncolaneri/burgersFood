@@ -17,7 +17,6 @@
   flex: 1;
   justify-content: space-between;
   text-align: center;
-  padding: 0px 10px;
   margin: 30px auto;
 }
 .amount__text {
@@ -30,10 +29,4 @@
   flex: 1;
   margin: 10px auto;
   justify-content: flex-end;
-}
-.discount-code__container {
-}
-.discount-code__text {
-}
-.discount-code__input {
 }
