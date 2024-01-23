@@ -95,7 +95,7 @@ const Resume = () => {
       ) : null}
 
       <div className="discount-code__container">
-        <div className="card flex justify-content-center">
+        <div className="card flex justify-content-left">
           <span className="p-float-label">
             <InputTextarea
               id="specialNotes"

@@ -16,6 +16,10 @@ import Pizza3 from "../assets/Pizza3.jpg";
 import Hamburguesa1 from "../assets/Hamburguesa1.png";
 import Hamburguesa2 from "../assets/Hamburguesa2.png";
 import Hamburguesa3 from "../assets/Hamburguesa3.png";
+import visa from "../assets/Visa.png";
+import amex from "../assets/Amex.png";
+import mastercard from "../assets/Mastercard.png";
+import invalidCard from "../assets/invalidCard.png";
 
 export const foodItems = [
   {
@@ -168,3 +172,10 @@ export const optionsMenu = [
     imgTag: Bebidas,
   },
 ];
+
+export const typeCreditCard = {
+  visa,
+  amex,
+  mastercard,
+  invalidCard,
+};
