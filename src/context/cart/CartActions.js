@@ -8,6 +8,8 @@ import {
   CHANGE_TOTAL_AMOUNT,
   CHANGE_QUANTITY_ITEMS,
   ADD_SPECIAL_NOTES,
+  SET_CURRENT_STEP,
+  SET_DISCOUNT,
 } from "../types";
 
 const CardActions = () => {
@@ -39,9 +41,12 @@ const CardActions = () => {
       0
     );
 
+    const updatedTotalAmount =
+      state.discount > tmpTotalAmount ? 0 : tmpTotalAmount - state.discount;
+
     dispatch({
       type: CHANGE_TOTAL_AMOUNT,
-      payload: tmpTotalAmount,
+      payload: updatedTotalAmount,
     });
 
     dispatch({
@@ -72,10 +77,30 @@ const CardActions = () => {
       });
     }
 
+    const tmpTotalAmount = tmpArray.reduce(
+      (acc, currentValue) => acc + currentValue.totalPrice,
+      0
+    );
+
+    const updatedTotalAmount =
+      state.discount > tmpTotalAmount ? 0 : tmpTotalAmount - state.discount;
+
     dispatch({
-      type: CHANGE_QUANTITY_ITEMS,
-      payload: tmpArray,
+      type: CHANGE_TOTAL_AMOUNT,
+      payload: updatedTotalAmount,
     });
+
+    if (!tmpArray.length) {
+      dispatch({
+        type: CLEAR_CART,
+        payload: tmpArray,
+      });
+    } else {
+      dispatch({
+        type: CHANGE_QUANTITY_ITEMS,
+        payload: tmpArray,
+      });
+    }
   };
 
   const deleteItems = (id) => {
@@ -88,7 +113,6 @@ const CardActions = () => {
   const clearCart = () => {
     dispatch({
       type: CLEAR_CART,
-      payload: [],
     });
   };
 
@@ -110,11 +134,28 @@ const CardActions = () => {
     dispatch({ type: ADD_SPECIAL_NOTES, payload: specialNotes });
   };
 
+  const setCurrentStep = (step) => {
+    dispatch({ type: SET_CURRENT_STEP, payload: step });
+  };
+
+  const setDiscount = (discount) => {
+    const updatedTotalAmount =
+      discount > state.totalAmount ? 0 : state.totalAmount - discount;
+
+    dispatch({
+      type: CHANGE_TOTAL_AMOUNT,
+      payload: updatedTotalAmount,
+    });
+    dispatch({ type: SET_DISCOUNT, payload: discount });
+  };
+
   return {
     cartItems: state.cartItems,
     filterSelected: state.filterSelected,
     totalAmount: state.totalAmount,
     specialNotes: state.specialNotes,
+    currentStep: state.currentStep,
+    discount: state.discount,
     addItems,
     deleteItems,
     clearCart,
@@ -122,6 +163,8 @@ const CardActions = () => {
     changeTotalAmount,
     changeQuantityItems,
     addSpecialNotes,
+    setCurrentStep,
+    setDiscount,
   };
 };
 

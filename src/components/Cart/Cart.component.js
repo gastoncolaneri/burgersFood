@@ -10,7 +10,7 @@ import "./cart.styles.css";
 const Cart = ({ isVisibleCart, setIsVisibleCard }) => {
   const navigate = useNavigate();
   const cartContext = useContext(CartContext);
-  const { cartItems, changeQuantityItems, totalAmount } = cartContext;
+  const { cartItems, totalAmount } = cartContext;
 
   const onClick = () => {
     setIsVisibleCard(false);
@@ -29,12 +29,7 @@ const Cart = ({ isVisibleCart, setIsVisibleCard }) => {
       <div className="cart__container">
         <h3>Resumen de tu pedido</h3>
         {cartItems?.map((item) => (
-          <Card
-            data={item}
-            key={item?.id}
-            hasChangeQuantity
-            changeQuantity={changeQuantityItems}
-          />
+          <Card data={item} key={item?.id} hasChangeQuantity />
         ))}
       </div>
 

@@ -46,9 +46,7 @@ const Payment = () => {
   const checkCVV = () => {
     return (
       paymentInformation.card.securedCode &&
-      cvvDigits !== paymentInformation.card.securedCode.length &&
-      !!paymentInformation.card.securedCode &&
-      checkValidCCNumber()
+      cvvDigits !== paymentInformation.card.securedCode.toString().length
     );
   };
 
@@ -177,6 +175,7 @@ const Payment = () => {
                 aria-describedby="securedCode"
                 className="secured-code__input"
                 keyfilter="pint"
+                useGrouping={false}
                 value={paymentInformation.card.securedCode}
                 onChange={(e) =>
                   setPaymentInformation({

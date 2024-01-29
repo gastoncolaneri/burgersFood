@@ -33,5 +33,3 @@ export const showLogoByTypeCreditCard = (creditCardNumber) => {
       return creditCardTypes.invalid;
   }
 };
-
-export const checkCreditCardType = {};

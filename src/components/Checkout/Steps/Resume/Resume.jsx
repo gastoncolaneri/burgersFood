@@ -10,15 +10,14 @@ import { DISCOUNT_CODE } from "../../../../utils/constants";
 
 const Resume = () => {
   const cartContext = useContext(CartContext);
-  const { cartItems, totalAmount, changeTotalAmount, addSpecialNotes } =
-    cartContext;
+  const { cartItems, totalAmount, addSpecialNotes, setDiscount } = cartContext;
   const [codeUsed, setCodeUsed] = useState("");
   const [notes, setNotes] = useState("");
   const [discountAmountApplied, setDiscountAmountApplied] = useState(0);
   const toast = useRef(null);
 
   const itemTemplate = (data) => {
-    return <Card data={data} key={data?.id} hasChangeQuantity={false} />;
+    return <Card data={data} key={data?.id} hasChangeQuantity />;
   };
 
   const checkDiscountCode = (code) => {
@@ -27,11 +26,7 @@ const Resume = () => {
     );
     if (codeApplied.length) {
       setDiscountAmountApplied(codeApplied[0].value);
-      changeTotalAmount(
-        codeApplied[0]?.value > totalAmount
-          ? 0
-          : totalAmount - codeApplied[0].value
-      );
+      setDiscount(codeApplied[0].value);
       toast.current.show({
         severity: "success",
         summary: "Cupón aplicado",

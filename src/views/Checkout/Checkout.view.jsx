@@ -19,7 +19,10 @@ import {
 } from "../../components/Checkout/Steps";
 import LocationContext from "../../context/location/LocationContext";
 import PaymentContext from "../../context/payment/PaymentContext";
-import { validateCreditCardNumber } from "../../utils/validateCreditCardNumber";
+import {
+  showLogoByTypeCreditCard,
+  validateCreditCardNumber,
+} from "../../utils/validateCreditCardNumber";
 
 import "./checkout.styles.css";
 
@@ -44,28 +47,39 @@ const items = [
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { cartItems, clearCart, totalAmount } = useContext(CartContext);
+  const { cartItems, clearCart, totalAmount, currentStep, setCurrentStep } =
+    useContext(CartContext);
   const { locations, deliveryInstructions, deliveryType } =
     useContext(LocationContext);
   const { paymentInformation } = useContext(PaymentContext);
-  const [activeIndex, setActiveIndex] = useState(0);
   const cardInfo = paymentInformation.card;
 
+  const cvvDigits = showLogoByTypeCreditCard(
+    paymentInformation.card.number
+  ).cvvDigits;
+
+  const checkCVV = () => {
+    return (
+      paymentInformation.card.securedCode &&
+      cvvDigits === paymentInformation.card.securedCode.toString().length
+    );
+  };
+
   const isDisabled = () => {
-    if (activeIndex === STEP_LOCATION) {
+    if (currentStep === STEP_LOCATION) {
       return (
         (!locations?.length || !deliveryInstructions) &&
         deliveryType === A_DOMICILIO
       );
     }
-    if (activeIndex === STEP_PAYMENT) {
+    if (currentStep === STEP_PAYMENT) {
       if (paymentInformation.typePayment === PAYMENT_TYPE[0]) {
         const isComplete =
           cardInfo.ownerNameCard !== "" &&
           cardInfo.type !== "" &&
           validateCreditCardNumber(cardInfo.number) &&
           cardInfo.expireDate !== "" &&
-          cardInfo.securedCode !== null;
+          checkCVV();
         return !isComplete;
       } else if (
         paymentInformation.typePayment === PAYMENT_TYPE[1] &&
@@ -80,8 +94,8 @@ const Checkout = () => {
   };
 
   const onClick = () => {
-    if (activeIndex < 4) {
-      setActiveIndex((prev) => prev + 1);
+    if (currentStep < 4) {
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -90,27 +104,30 @@ const Checkout = () => {
     clearCart();
   };
 
+  console.log("test");
+
   useEffect(() => {
     if (!cartItems.length) {
       navigate("/");
+      clearCart();
     }
-  }, [cartItems.length, navigate]);
+  }, [cartItems.length, clearCart, navigate]);
 
   return (
     <div className="cart__container">
       <div className="steps__container">
         <Steps
           model={items}
-          activeIndex={activeIndex}
-          onSelect={(e) => setActiveIndex(e.index)}
+          activeIndex={currentStep}
+          onSelect={(e) => setCurrentStep(e.index)}
           readOnly={!locations?.length || !deliveryInstructions}
           className="step__item"
         />
       </div>
-      {activeIndex === STEP_RESUMEN && <Resume />}
-      {activeIndex === STEP_LOCATION && <Location />}
-      {activeIndex === STEP_PAYMENT && <Payment />}
-      {activeIndex === STEP_CONFIRM && <Confirm />}
+      {currentStep === STEP_RESUMEN && <Resume />}
+      {currentStep === STEP_LOCATION && <Location />}
+      {currentStep === STEP_PAYMENT && <Payment />}
+      {currentStep === STEP_CONFIRM && <Confirm />}
 
       <div className="buttons-resume__container">
         <Button
@@ -118,7 +135,7 @@ const Checkout = () => {
           label="Cancelar pedido"
           onClick={cancelOrder}
         />
-        {activeIndex < STEP_CONFIRM && (
+        {currentStep < STEP_CONFIRM && (
           <Button
             iconPos="right"
             icon="pi pi-arrow-right"
@@ -127,7 +144,7 @@ const Checkout = () => {
             disabled={isDisabled()}
           />
         )}
-        {activeIndex === STEP_CONFIRM && (
+        {currentStep === STEP_CONFIRM && (
           <Button
             iconPos="right"
             className="p-button-success"

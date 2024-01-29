@@ -5,6 +5,10 @@ export const SHOW_MESSAGE_FOR = "SHOW_MESSAGE_FOR";
 export const USER_LOGIN = "USER_LOGIN";
 export const USER_LOGOUT = "USER_LOGOUT";
 
+// Navigation types
+
+export const SET_CURRENT_STEP = "SET_CURRENT_STEP";
+
 // Foods types
 
 export const ADD_ITEMS = "ADD_ITEMS";
@@ -25,6 +29,7 @@ export const SET_DELIVERY_TYPE = "SET_DELIVERY_TYPE";
 
 export const ADD_SPECIAL_NOTES = "ADD_SPECIAL_NOTES";
 export const CLEAR_CART = "CLEAR_CART";
+export const SET_DISCOUNT = "SET_DISCOUNT";
 
 // Payment types
 

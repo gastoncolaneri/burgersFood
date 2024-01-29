@@ -32,7 +32,13 @@
 }
 
 .price__container {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.quantity__input input {
+  max-width: 70px;
 }
 
 .price__value {

@@ -7,6 +7,8 @@ import {
   FOOD_FILTERED,
   CHANGE_TOTAL_AMOUNT,
   ADD_SPECIAL_NOTES,
+  SET_CURRENT_STEP,
+  SET_DISCOUNT,
 } from "../types";
 
 export const cartInitialState = {
@@ -15,6 +17,8 @@ export const cartInitialState = {
   filterSelected: ["Hamburguesas", "Pizzas", "Complementos", "Bebidas"],
   totalAmount: 0,
   specialNotes: "",
+  currentStep: 0,
+  discount: 0,
 };
 
 const cartReducer = (state, action) => {
@@ -25,7 +29,7 @@ const cartReducer = (state, action) => {
     case CHANGE_QUANTITY_ITEMS:
       return { ...state, cartItems: payload };
     case CLEAR_CART:
-      return { ...state, cartItems: payload };
+      return { ...state, cartItems: [], discount: 0 };
     case DELETE_ITEMS:
       return { ...state, cartItems: payload };
     case FOOD_FILTERED:
@@ -34,6 +38,10 @@ const cartReducer = (state, action) => {
       return { ...state, totalAmount: payload };
     case ADD_SPECIAL_NOTES:
       return { ...state, specialNotes: payload };
+    case SET_CURRENT_STEP:
+      return { ...state, currentStep: payload };
+    case SET_DISCOUNT:
+      return { ...state, discount: payload };
     default:
       return state;
   }

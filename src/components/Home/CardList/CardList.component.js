@@ -18,6 +18,8 @@ const CardList = () => {
   const [isFilter, setIsFilter] = useState(false);
   const [filterSelected, setFilterSelected] = useState(titleList);
 
+  console.log("cartItems");
+
   const handleClick = (item) => {
     addItems(item);
     toast.current.show({

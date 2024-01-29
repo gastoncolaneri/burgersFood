@@ -1,21 +1,15 @@
-import React, { useCallback, useState } from "react";
-import { Dropdown } from "primereact/dropdown";
+import React, { useContext, useState } from "react";
+import { InputNumber } from "primereact/inputnumber";
 import NoImagen from "../../../assets/NoImagen.png";
+import CartContext from "../../../context/cart/CartContext";
 
 import "./cardResume.styles.css";
 
-const Card = ({ data, changeQuantity, hasChangeQuantity = true }) => {
+const Card = ({ data, hasChangeQuantity = true }) => {
   const [valueSelected, setValueSelected] = useState(data?.quantity);
+  const cartContext = useContext(CartContext);
 
-  const generateOptions = useCallback(() => {
-    const options = [];
-    let i = 0;
-    while (i <= data?.quantity) {
-      options.push(i);
-      i++;
-    }
-    return options;
-  }, [data?.quantity]);
+  const { changeQuantityItems } = cartContext;
 
   return (
     <div className="items__container">
@@ -37,17 +31,21 @@ const Card = ({ data, changeQuantity, hasChangeQuantity = true }) => {
                 <span className="price__value">€{data?.totalPrice}</span>
               </div>
               {hasChangeQuantity ? (
-                <Dropdown
+                <InputNumber
                   value={valueSelected}
-                  options={generateOptions()}
-                  onChange={(e) => {
+                  onValueChange={(e) => {
                     setValueSelected(e.value);
-                    changeQuantity({
+                    changeQuantityItems({
                       id: data?.id,
                       quantity: e?.value,
                       price: data?.price,
                     });
                   }}
+                  mode="decimal"
+                  className="w-2 quantity__input"
+                  showButtons
+                  min={0}
+                  max={100}
                 />
               ) : (
                 <div className="product-list-action">
