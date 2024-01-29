@@ -1,3 +1,5 @@
+import { typeCreditCard } from "../data/data";
+
 export const STEP_RESUMEN = 0;
 export const STEP_LOCATION = 1;
 export const STEP_PAYMENT = 2;
@@ -37,3 +39,38 @@ export const DISCOUNT_CODE = [
   { name: "off25", value: 25 },
   { name: "off30", value: 30 },
 ];
+
+export const PAYMENT_TYPE = ["creditCard", "cash"];
+
+export const isExactOptions = ["Si", "No"];
+
+export const ownerCardRegex = /^[a-zA-Z\s]+$/;
+export const amountRegex = /^\d+(\.\d+)?$/;
+export const creditCardTypes = {
+  visa: { id: 1, name: "Visa", logo: typeCreditCard.visa, cvvDigits: 4 },
+  masterCard: {
+    id: 2,
+    name: "Master Card",
+    logo: typeCreditCard.mastercard,
+    cvvDigits: 4,
+  },
+  amex: {
+    id: 3,
+    name: "American Express",
+    logo: typeCreditCard.amex,
+    cvvDigits: 3,
+  },
+  invalid: {
+    id: 4,
+    name: "Inválida",
+    logo: typeCreditCard.invalidCard,
+    cvvDigits: null,
+  },
+};
+
+export const visaPatternFullNumber = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+export const mastercardPatternFullNumber = /^(?:5[1-5][0-9]{14})$/;
+export const amexPatternFullNumber = /^(?:3[47][0-9]{13})$/;
+export const visaPatternFirstDigits = /^4/;
+export const mastercardPatternFirstDigits = /^5[1-5]/;
+export const amexPatternFirstDigits = /^3[47]/;

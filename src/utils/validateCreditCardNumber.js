@@ -1,34 +1,37 @@
-import { typeCreditCard } from "../data/data";
+import {
+  amexPatternFirstDigits,
+  amexPatternFullNumber,
+  creditCardTypes,
+  mastercardPatternFirstDigits,
+  mastercardPatternFullNumber,
+  visaPatternFirstDigits,
+  visaPatternFullNumber,
+} from "./constants";
 
 export const validateCreditCardNumber = (creditCardNumber) => {
-  let visaPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-  let mastercardPattern = /^(?:5[1-5][0-9]{14})$/;
-  let amexPattern = /^(?:3[47][0-9]{13})$/;
-
-  let isVisa = visaPattern.test(creditCardNumber) === true;
-  let isMastercard = mastercardPattern.test(creditCardNumber) === true;
-  let isAmex = amexPattern.test(creditCardNumber) === true;
+  let isVisa = visaPatternFullNumber.test(creditCardNumber) === true;
+  let isMastercard =
+    mastercardPatternFullNumber.test(creditCardNumber) === true;
+  let isAmex = amexPatternFullNumber.test(creditCardNumber) === true;
 
   return isVisa || isMastercard || isAmex;
 };
 
 export const showLogoByTypeCreditCard = (creditCardNumber) => {
-  let visaPattern = /^4/;
-  let mastercardPattern = /^5[1-5]/;
-  let amexPattern = /^3[47]/;
-
-  let isVisa = visaPattern.test(creditCardNumber);
-  let isMastercard = mastercardPattern.test(creditCardNumber);
-  let isAmex = amexPattern.test(creditCardNumber);
+  let isVisa = visaPatternFirstDigits.test(creditCardNumber);
+  let isMastercard = mastercardPatternFirstDigits.test(creditCardNumber);
+  let isAmex = amexPatternFirstDigits.test(creditCardNumber);
 
   switch (true) {
     case isVisa:
-      return { logo: typeCreditCard.visa, cvvDigits: 4 };
+      return creditCardTypes.visa;
     case isMastercard:
-      return { logo: typeCreditCard.mastercard, cvvDigits: 4 };
+      return creditCardTypes.masterCard;
     case isAmex:
-      return { logo: typeCreditCard.amex, cvvDigits: 3 };
+      return creditCardTypes.amex;
     default:
-      return { logo: typeCreditCard.invalidCard, cvvDigits: null };
+      return creditCardTypes.invalid;
   }
 };
+
+export const checkCreditCardType = {};

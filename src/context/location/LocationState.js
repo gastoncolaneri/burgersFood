@@ -1,7 +1,7 @@
 import LocationActions from "./LocationActions";
 import LocationContext from "./LocationContext";
 
-const CartState = (props) => {
+const LocationState = (props) => {
   const {
     addLocation,
     modifyLocation,
@@ -33,4 +33,4 @@ const CartState = (props) => {
   );
 };
 
-export default CartState;
+export default LocationState;

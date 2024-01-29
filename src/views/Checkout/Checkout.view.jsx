@@ -9,6 +9,7 @@ import {
   STEP_PAYMENT,
   STEP_CONFIRM,
   A_DOMICILIO,
+  PAYMENT_TYPE,
 } from "../../utils/constants";
 import {
   Confirm,
@@ -17,6 +18,8 @@ import {
   Resume,
 } from "../../components/Checkout/Steps";
 import LocationContext from "../../context/location/LocationContext";
+import PaymentContext from "../../context/payment/PaymentContext";
+import { validateCreditCardNumber } from "../../utils/validateCreditCardNumber";
 
 import "./checkout.styles.css";
 
@@ -41,11 +44,12 @@ const items = [
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const cartContext = useContext(CartContext);
-  const locationContext = useContext(LocationContext);
-  const { cartItems, clearCart } = cartContext;
-  const { locations, deliveryInstructions, deliveryType } = locationContext;
+  const { cartItems, clearCart, totalAmount } = useContext(CartContext);
+  const { locations, deliveryInstructions, deliveryType } =
+    useContext(LocationContext);
+  const { paymentInformation } = useContext(PaymentContext);
   const [activeIndex, setActiveIndex] = useState(0);
+  const cardInfo = paymentInformation.card;
 
   const isDisabled = () => {
     if (activeIndex === STEP_LOCATION) {
@@ -53,6 +57,24 @@ const Checkout = () => {
         (!locations?.length || !deliveryInstructions) &&
         deliveryType === A_DOMICILIO
       );
+    }
+    if (activeIndex === STEP_PAYMENT) {
+      if (paymentInformation.typePayment === PAYMENT_TYPE[0]) {
+        const isComplete =
+          cardInfo.ownerNameCard !== "" &&
+          cardInfo.type !== "" &&
+          validateCreditCardNumber(cardInfo.number) &&
+          cardInfo.expireDate !== "" &&
+          cardInfo.securedCode !== null;
+        return !isComplete;
+      } else if (
+        paymentInformation.typePayment === PAYMENT_TYPE[1] &&
+        !paymentInformation.cash.isExact
+      )
+        return (
+          !paymentInformation.cash.value ||
+          paymentInformation.cash.value < totalAmount
+        );
     }
     return false;
   };
