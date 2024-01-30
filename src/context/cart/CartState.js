@@ -9,6 +9,15 @@ const CartState = (props) => {
     deleteItems,
     filterFood,
     filterSelected,
+    changeTotalAmount,
+    changeQuantityItems,
+    totalAmount,
+    addSpecialNotes,
+    specialNotes,
+    currentStep,
+    setCurrentStep,
+    discount,
+    setDiscount,
   } = CardActions();
 
   const value = {
@@ -18,6 +27,15 @@ const CartState = (props) => {
     deleteItems,
     filterFood,
     filterSelected,
+    changeTotalAmount,
+    changeQuantityItems,
+    totalAmount,
+    addSpecialNotes,
+    specialNotes,
+    currentStep,
+    setCurrentStep,
+    discount,
+    setDiscount,
   };
 
   return (

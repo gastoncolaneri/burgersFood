@@ -1,6 +1,7 @@
-import { Button } from "primereact/button";
 import React from "react";
-import NoImagen from "../../assets/NoImagen.png";
+import { Button } from "primereact/button";
+import NoImagen from "../../../assets/NoImagen.png";
+
 import "./cardItem.styles.css";
 
 const CardItem = (data, handleClick) => {
@@ -18,7 +19,7 @@ const CardItem = (data, handleClick) => {
           <div className="product-description">{data?.description}</div>
         </div>
         <div className="product-grid-item-bottom">
-          <span className="product-price">${data?.price}</span>
+          <span className="product-price">€{data?.price}</span>
           <Button
             icon="pi pi-shopping-cart"
             label="Agregar"

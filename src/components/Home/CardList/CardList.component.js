@@ -1,13 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
 import { DataView } from "primereact/dataview";
+import { Toast } from "primereact/toast";
 import { Chip } from "primereact/chip";
-import CardItem from "../Card/CardItem.component";
-import ChipItem from "../Chip/ChipItem.component";
-import { optionsMenu, foodItems } from "../../data/data";
-import CartContext from "../../context/cart/CartContext";
+import CardItem from "../CardItem/CardItem.component";
+import ChipItem from "../../Chip/ChipItem.component";
+import CartContext from "../../../context/cart/CartContext";
+import { foodItems, optionsMenu } from "../../../data/data";
 
 import "./cardList.styles.css";
-import { Toast } from "primereact/toast";
 
 const titleList = ["Hamburguesas", "Pizzas", "Complementos", "Bebidas"];
 
@@ -17,6 +17,8 @@ const CardList = () => {
   const { addItems } = cartContext;
   const [isFilter, setIsFilter] = useState(false);
   const [filterSelected, setFilterSelected] = useState(titleList);
+
+  console.log("cartItems");
 
   const handleClick = (item) => {
     addItems(item);
@@ -79,6 +81,7 @@ const CardList = () => {
                   value={filterBySection(item)}
                   layout="list"
                   itemTemplate={(e) => CardItem(e, handleClick)}
+                  lazy
                 />
               </div>
             );
