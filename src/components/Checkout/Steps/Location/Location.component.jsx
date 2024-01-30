@@ -13,7 +13,7 @@ import LocationContext from "../../../../context/location/LocationContext";
 
 import "./location.styles.css";
 
-const Location = () => {
+const Location = (isEditable = true) => {
   const locationContext = useContext(LocationContext);
   const {
     locations,
@@ -42,12 +42,14 @@ const Location = () => {
   }, [locations.length]);
   return (
     <div className="location__container">
-      <SelectButton
-        value={deliveryType}
-        options={DELIVERY_TYPE}
-        onChange={(e) => setDeliveryType(e.value)}
-        className="location__options"
-      />
+      {isEditable && (
+        <SelectButton
+          value={deliveryType}
+          options={DELIVERY_TYPE}
+          onChange={(e) => setDeliveryType(e.value)}
+          className="location__options"
+        />
+      )}
       {deliveryType === A_DOMICILIO ? (
         <div>
           {locations.length ? (
@@ -64,7 +66,7 @@ const Location = () => {
                   {defaultLocation?.additionalInfo}
                 </span>
               </div>
-              {buttonLocation}
+              {isEditable && buttonLocation}
             </div>
           ) : (
             <div className="location-info__container">
@@ -76,7 +78,7 @@ const Location = () => {
                   No hay direcciones cargadas
                 </span>
               </div>
-              {buttonLocation}
+              {isEditable && buttonLocation}
             </div>
           )}
           <Divider />
@@ -93,17 +95,19 @@ const Location = () => {
                   {deliveryInstructions?.clarificationsDelivery}
                 </span>
               </div>
-              <div className="button-location__container">
-                <Button
-                  onClick={() => {
-                    setIsOpen(true);
-                    setTypeDialog(DELIVERY_INFO_DIALOG);
-                  }}
-                  label="Editar"
-                  style={{ width: "60px" }}
-                  className="p-button-sm p-button-rounded p-1"
-                />
-              </div>
+              {isEditable && (
+                <div className="button-location__container">
+                  <Button
+                    onClick={() => {
+                      setIsOpen(true);
+                      setTypeDialog(DELIVERY_INFO_DIALOG);
+                    }}
+                    label="Editar"
+                    style={{ width: "60px" }}
+                    className="p-button-sm p-button-rounded p-1"
+                  />
+                </div>
+              )}
             </div>
           ) : (
             <div className="location-info__container">
@@ -115,34 +119,32 @@ const Location = () => {
                   No hay instrucciones de entrega cargadas
                 </span>
               </div>
-              <div className="button-location__container">
-                <Button
-                  onClick={() => {
-                    setIsOpen(true);
-                    setTypeDialog(DELIVERY_INFO_DIALOG);
-                  }}
-                  label="Crear"
-                  style={{ width: "60px" }}
-                  className="p-button-sm p-button-rounded p-1"
-                />
-              </div>
+              {isEditable && (
+                <div className="button-location__container">
+                  <Button
+                    onClick={() => {
+                      setIsOpen(true);
+                      setTypeDialog(DELIVERY_INFO_DIALOG);
+                    }}
+                    label="Crear"
+                    style={{ width: "60px" }}
+                    className="p-button-sm p-button-rounded p-1"
+                  />
+                </div>
+              )}
             </div>
           )}
           <Divider />
         </div>
       ) : (
         <>
-          <div class="mapouter">
-            <div class="gmap_canvas">
+          <div className="mapouter">
+            <div className="gmap_canvas">
               <iframe
                 width="100%"
                 height="300"
                 id="gmap_canvas"
                 src="https://maps.google.com/maps?q=P%C3%A7a.%20de%20la%20Reina,%2020,%2046003%20Val%C3%A8ncia,%20Valencia&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0"
                 title="location-map"
               ></iframe>
             </div>

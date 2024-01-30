@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <div className="banner__box">
-        <img src={Banner} alt="banner" className="banner" />
+        <img src={Banner} alt="banner" className="banner" loading="lazy" />
         <div className="banner__text">Tu restaurante favorito</div>
       </div>
       <CardList />

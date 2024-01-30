@@ -20,6 +20,8 @@ import visa from "../assets/Visa.png";
 import amex from "../assets/Amex.png";
 import mastercard from "../assets/Mastercard.png";
 import invalidCard from "../assets/invalidCard.png";
+import delivery from "../assets/Delivery.png";
+import pickUp from "../assets/pickUp.png";
 
 export const foodItems = [
   {
@@ -178,4 +180,9 @@ export const typeCreditCard = {
   amex,
   mastercard,
   invalidCard,
+};
+
+export const typeDelivery = {
+  delivery,
+  pickUp,
 };

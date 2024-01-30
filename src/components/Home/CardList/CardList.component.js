@@ -81,6 +81,7 @@ const CardList = () => {
                   value={filterBySection(item)}
                   layout="list"
                   itemTemplate={(e) => CardItem(e, handleClick)}
+                  lazy
                 />
               </div>
             );

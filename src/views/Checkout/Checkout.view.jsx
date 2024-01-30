@@ -32,7 +32,7 @@ const items = [
     command: (event) => {},
   },
   {
-    label: "Ubicación",
+    label: "Entrega",
     command: (event) => {},
   },
   {
@@ -104,8 +104,6 @@ const Checkout = () => {
     clearCart();
   };
 
-  console.log("test");
-
   useEffect(() => {
     if (!cartItems.length) {
       navigate("/");
@@ -120,7 +118,7 @@ const Checkout = () => {
           model={items}
           activeIndex={currentStep}
           onSelect={(e) => setCurrentStep(e.index)}
-          readOnly={!locations?.length || !deliveryInstructions}
+          readOnly={isDisabled()}
           className="step__item"
         />
       </div>
